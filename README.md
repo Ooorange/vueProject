@@ -1,9 +1,16 @@
 # vue-project                                        通过vue-cli脚手架快速构建项目
-step {
-one :npm install -g vue-cli
-two :npm init <template-name> <project name> eg:npm init webpack orange-project
-}
+## Step
+```
+* 1 :npm install -g vue-cli
+* 2 :npm init <template-name> <project name> eg:npm init webpack orange-project
+```
 
+# Using eslint grammer check
+## Step
+```
+* 1:npm install eslint-config-airbnb": "^6.2.0,
+* 2: change .eslintrc.js to 'extends: 'airbnb/base' ',
+```
 > orange vue project
 
 ## Build Setup
@@ -27,7 +34,4 @@ npm run e2e
 # run all tests
 npm test
 ```
-* red
-* green
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
