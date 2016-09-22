@@ -38,3 +38,7 @@ npm test
   ```
   gulp
   ```
+## package.json usage introduction
+  ![alt text][id]
+
+  [id]: ./src/resources/package.png "package介绍"
