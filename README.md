@@ -38,7 +38,7 @@ npm test
   ```
   gulp
   ```
-## package.json usage introduction
+## [package.json usage introduction](http://javascript.ruanyifeng.com/nodejs/packagejson.html).
   ![alt text][id]
 
   [id]: ./src/resources/package.png "package介绍"
