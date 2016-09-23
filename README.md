@@ -44,6 +44,7 @@ npm test
   [id]: ./src/resources/package.png "package介绍"
   >  scripts指定了运行脚本命令的npm命令行缩写，比如start指定了运行npm run start时，所要执行的命令。
   >  ^1.2.0表示使用1.*下最新的版本
+  >  ^Express支持多工作环境，比如生产环境 和开发环境 等
 
 ## Learning Notes:
 ```

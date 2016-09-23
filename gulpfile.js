@@ -8,6 +8,9 @@ const portfinder = require("portfinder"); //寻找一个可用的端口
 const gutil = require('gulp-util'); //终端文字颜色工具
 const colorsSupported = require('supports-color'); // 检测终端是否支持颜色
 
+process.env.REPO_NAME = process.env.REPO_NAME || 'app';
+process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+
 var gulp = require('gulp');
 gulp.task('default', function () {
   console.log('task success');
