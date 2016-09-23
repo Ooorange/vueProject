@@ -4,7 +4,7 @@ ifndef JENKINS_HOME
 endif
 REPO_URL=$(shell git ls-remote --get-url)
 # REPO_NAME=$(shell basename $(REPO_URL))
-REPO_NAME=easybikeAdminWeb
+REPO_NAME=vue-project
 
 .PHONY: build
 build:
@@ -35,7 +35,7 @@ build-pro:
 	make build-simple;
 
 dev:
-	npm run start;
+	npm run dev;
 
 tag-dev:
 	export TAG=dev_`date +%Y%m%d%H%M`; \

@@ -42,3 +42,14 @@ npm test
   ![alt text][id]
 
   [id]: ./src/resources/package.png "package介绍"
+  >  scripts指定了运行脚本命令的npm命令行缩写，比如start指定了运行npm run start时，所要执行的命令。
+  >  ^1.2.0表示使用1.*下最新的版本
+
+## Learning Notes:
+```
+* 1 :Makefile file do not add suffix like Makefile.txt otherwise makefile rules will not work
+* 2 :process.env.NODE_ENV会在编译的时候进行赋值,在运行的时候作为一个字符串类型,所以不能进行赋值,只能在编译的时候进行
+* 3 :process.env.NODE_ENV 会在makefile 命令打包的时候进行截取(uat,dev,pro),在不同环境下打包时会根据这个NODE_ENV
+     设置不同的服务器地址
+* 4 :process.env为进程环境,要设置此NODE_ENV环境需要:export process.env.NODE_ENV=test
+```

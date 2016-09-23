@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <img class="logo" src="./assets/logo.png">
-    <hello></hello>
     <p>
-      Welcome to your Vue.js app!
+      {{getEnv}}
     </p>
     <p>
       To get a better understanding of how this boilerplate works, check out
@@ -22,12 +21,12 @@
   </div>
 </template>
 
-<script>
-  import Hello from './components/Hello';
-
+<script type="text/babel">
   export default {
-    components: {
-      Hello,
+    computed: {
+      getEnv() {
+        return process.env.NODE_ENV;
+      },
     },
   };
 </script>

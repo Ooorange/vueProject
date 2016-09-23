@@ -5,9 +5,10 @@
   "author": "orange",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
+    "dev": "gulp webpack-dev-server",
+    "build": "gulp build",
     "test": "",
+    "start": "gulp watch",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "babel-runtime": "^6.0.0"
   },
   "devDependencies": {
+    "webpack-dev-server": "^1.14.1",
     "babel-core": "^6.0.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.0.0",
@@ -52,6 +54,15 @@
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
-    "webpack-merge": "^0.8.3"
-  }
+    "webpack-merge": "^0.8.3",
+    "portfinder": "^1.0.5",
+    "gulp-util": "^3.0.7",
+    "supports-color": "^3.1.2"
+  },
+
+  "site_port":{
+    "dev": 8084
+  },
+  "main": "./src/main.js",
+  "cdn-directory": "common-h5"
 }
