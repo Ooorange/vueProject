@@ -1,3 +1,6 @@
+/**
+ *  module.loaders 是最关键的一块配置。它告知 webpack 每一种文件都需要使用什么加载器来处理
+ */
 var path = require('path');
 var pkg = require('./package.json');
 var webpack = require('webpack');
@@ -21,6 +24,8 @@ try {
 
 var baseWebpackConfig = {
   entry: {
+    //  Make sure to use [name] or [id] in output.filename
+    //  when using multiple entry points
     app: pkg.main || './src/main.js'
   },
   output: {

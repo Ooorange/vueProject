@@ -7,17 +7,91 @@ const pkg = require('./package.json');
 const portfinder = require("portfinder"); //寻找一个可用的端口
 const gutil = require('gulp-util'); //终端文字颜色工具
 const colorsSupported = require('supports-color'); // 检测终端是否支持颜色
+const zip = require('gulp-zip');
+var del =require('del');
 
 process.env.REPO_NAME = process.env.REPO_NAME || 'app';
 process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+const env = process.env.NODE_ENV;
+const repoName = process.env.REPO_NAME;
+const distRoot = './dist';
+const appRoot = `./dist/${env}/${pkg.version}`;
 
 var gulp = require('gulp');
 gulp.task('default', function () {
   console.log('task success');
 });
 
-gulp.task('build', function () {
+gulp.task('build',['clean', 'zip'], function () {
   gutil.log(gutil.colors.green('构建完成'));
+});
+
+gulp.task('clean', function () {
+  return del.sync([distRoot + '/**/*', distRoot, repoName + '.zip']);
+});
+
+gulp.task('copy-static', function () {
+  return gulp.src('./static/')
+    .pipe(gulp.dest(appRoot));
+});
+
+// TODO delete this task in pro
+gulp.task('practiceTest', function () {
+  return gulp.src(['package.json', 'Makefile'])
+    .pipe(gulp.dest('./test'))
+    .on('end', function () {
+      gutil.log(
+        gutil.colors.green('this is orange\'s offic'),
+        gutil.colors.green.bold(appRoot)
+      );
+    });
+});
+
+
+gulp.task('copy-check.sh', function () {
+  return gulp.src(['check.sh'])
+    .pipe(gulp.dest(`${distRoot}/${env}`));
+});
+
+gulp.task('copy-jenkins', function () {
+  return gulp.src([
+    'makefile',
+    'package.json'
+  ])
+  .pipe(gulp.dest(`${distRoot}/${env}`))
+});
+
+gulp.task('zip', ['compile', 'copy'], function () {
+  var zipFileName = repoName + '.zip';
+  return gulp.src([distRoot + '/**/*'], {base: './dist'})
+    .pipe(zip(zipFileName))
+    .pipe(gulp.dest('./'))
+    .on('end', function () {
+      gutil.log(
+        gutil.colors.green('生成'),
+        gutil.colors.green.bold(zipFileName),
+        gutil.colors.green('成功')
+      );
+    })
+});
+
+gulp.task('copy-nginx.conf', function () {
+  return gulp.src('./n')
+});
+
+gulp.task('copy', ['copy-static', 'copy-jenkins', 'copy-check.sh']);
+
+gulp.task('compile', function (done) {
+  const config = require('./webpack.conf.js');
+  if (config) {
+    webpack(config).run(function (err) {
+      gutil.log(gutil.colors.green('构建成功'));
+      done(err);
+    });
+  } else {
+    gutil.log(gutil.colors.red('分支存在问题,不符合发布规范'));
+    done(new Error('分支存在问题,不符合发布规范'))
+  }
 });
 
 gulp.task('watch', () => {

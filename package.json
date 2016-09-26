@@ -57,7 +57,9 @@
     "webpack-merge": "^0.8.3",
     "portfinder": "^1.0.5",
     "gulp-util": "^3.0.7",
-    "supports-color": "^3.1.2"
+    "supports-color": "^3.1.2",
+    "del": "^2.2.1",
+    "gulp-zip": "^3.2.0"
   },
 
   "site_port":{
