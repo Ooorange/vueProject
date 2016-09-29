@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <img class="logo" src="./assets/logo.png">
-    <p>
-      {{getEnv}}
+    <p gess>
+      {{gess}}
     </p>
+    <div id="example">
+      <my-component></my-component>
+    </div>
     <p>
       To get a better understanding of how this boilerplate works, check out
       <a href="http://vuejs-templates.github.io/webpack" target="_blank">its documentation</a>.
@@ -20,16 +23,6 @@
     </p>
   </div>
 </template>
-
-<script type="text/babel">
-  export default {
-    computed: {
-      getEnv() {
-        return process.env.NODE_ENV;
-      },
-    },
-  };
-</script>
 
 <style>
   html {
@@ -61,3 +54,30 @@
     height: 100px
   }
 </style>
+
+<script type="text/babel">
+  import Vue from 'vue';
+  const Profile = Vue.extend({
+    template: '<p>i am orange</p>',
+  });
+  function gedwat({ x = 1, y = 2 } = {}) {
+    console.log(x, y);
+  }
+  gedwat(); // 1 2
+  gedwat({ x: 3 });//  3, 2
+  gedwat({ x: 4, y: 5 });// 4, 5
+
+  gedwat({ z: 30 });// 1 2
+
+  // 注册
+  Vue.component('my-component', Profile);
+  // 创建根实例
+  const vm = new Vue({
+    computed: {
+      gess() {
+        return '1234567890';
+      },
+    },
+  });
+  console.log(vm.gress);
+</script>

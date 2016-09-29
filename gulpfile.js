@@ -1,5 +1,6 @@
 /**
  * Created by orange on 16/9/6.
+ * click link for gulp documentation: http://www.gulpjs.com.cn/docs/api/
  */
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server'); //热加载服务
@@ -61,6 +62,8 @@ gulp.task('copy-jenkins', function () {
   .pipe(gulp.dest(`${distRoot}/${env}`))
 });
 
+//base: 将distRoot目录下的.dist/**/* 从/**/*开始截取
+//将zip包放在当前根目录下
 gulp.task('zip', ['compile', 'copy'], function () {
   var zipFileName = repoName + '.zip';
   return gulp.src([distRoot + '/**/*'], {base: './dist'})
@@ -110,7 +113,7 @@ gulp.task('watch', () => {
     },
     // server and middleware options
   });
-
+  //如果想让外部访问的话,需要将localhost换成0.0.0.0
   portfinder.getPort({
     port: pkg.site_port.dev,
   }, (err, port) => {

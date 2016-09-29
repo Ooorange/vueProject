@@ -1,3 +1,6 @@
+/**
+ * no-console 表示是否显示控制台警告
+ */
 module.exports = {
   root: true,
   parser: 'babel-eslint',

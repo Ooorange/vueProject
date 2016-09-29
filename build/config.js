@@ -1,5 +1,6 @@
 /**
  * Created by orange on 16/9/22.
+ * 作为全局的属性暴露
  */
 var path = require('path');
 var packageJson = require('../package.json');
